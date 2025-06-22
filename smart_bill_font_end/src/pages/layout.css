@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+.header {
+  @apply fixed top-0 left-0 right-0 z-50 bg-gray-900 shadow-md;
+}
+
+.nav-container {
+  @apply container mx-auto px-4 flex items-center justify-between h-16;
+}
+
+.logo-text {
+  @apply text-white text-2xl font-bold italic;
+}
+
+.nav-link {
+  @apply text-white hover:text-blue-300;
+}
+
+.navbar {
+  @apply hidden xl:flex space-x-6;
+}
+
+.mobile-toggle {
+  @apply xl:hidden text-white text-2xl;
+}
+
+.cta-button {
+  @apply bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300;
+}
+
+.mobile-nav {
+  @apply bg-gray-800 text-white px-4 py-2 space-y-2;
+}
