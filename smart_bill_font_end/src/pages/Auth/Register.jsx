@@ -23,7 +23,6 @@ function Register() {
     setLoading(true);
     setErrors({});
 
-    // Validate phone number format if provided
     if (formData.phone_number && !/^251\d{9}$/.test(formData.phone_number)) {
       setErrors({
         phone_number: [
