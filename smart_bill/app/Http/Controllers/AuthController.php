@@ -188,6 +188,7 @@ public function register(Request $request)
             ? response()->json(['message' => 'Password reset link sent!'])
             : response()->json(['message' => 'Failed to send reset link.'], 400);
     }
+    // a function to reset a password by sending an email to the registered account
 public function reset(Request $request)
 {
     $request->validate([

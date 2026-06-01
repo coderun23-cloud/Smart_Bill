@@ -27,12 +27,10 @@ Route::post('/reset-password', [AuthController::class, 'reset']);
 
 Route::post('/contact', [ContactController::class, 'register']);
 Route::get('/contact', [ContactController::class, 'displayMessage']);
-
 Route::post('/logout',[AuthController::class,'logout'])->middleware('auth:sanctum');
 Route::get('/profile', [AuthController::class, 'profile'])->middleware('auth:sanctum');
 Route::put('/profile', [AuthController::class, 'updateProfile'])->middleware('auth:sanctum');
 Route::delete('/profile/{id}', [AuthController::class, 'deleteAccount']);
-
 Route::apiResource('customer',CustomerController::class);
 Route::apiResource('tariff',TariffController::class);
 Route::apiResource('reading',ReadingController::class)->middleware('auth:sanctum');
