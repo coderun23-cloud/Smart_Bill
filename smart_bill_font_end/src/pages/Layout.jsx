@@ -19,18 +19,18 @@ function Layout() {
             <Link to="#hero" className="text-white hover:text-blue-300">
               Home
             </Link>
-            <Link to="#about" className="text-white hover:text-blue-300">
+            <a href="#about" className="text-white hover:text-blue-300">
               About
-            </Link>
-            <Link to="#services" className="text-white hover:text-blue-300">
+            </a>
+            <a href="#services" className="text-white hover:text-blue-300">
               Services
-            </Link>
-            <Link to="#pricing" className="text-white hover:text-blue-300">
+            </a>
+            <a href="#pricing" className="text-white hover:text-blue-300">
               Pricing
-            </Link>
-            <Link to="#contact" className="text-white hover:text-blue-300">
+            </a>
+            <a href="#contact" className="text-white hover:text-blue-300">
               Contact
-            </Link>
+            </a>
           </nav>
 
           <button
