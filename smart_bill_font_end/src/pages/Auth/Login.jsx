@@ -646,7 +646,6 @@ function Login() {
               <span className="logo-sub">Ethiopia Electricity</span>
             </div>
           </Link>
-          <span className="nav-badge">● LIVE SYSTEM</span>
         </nav>
 
         {/* Main */}
