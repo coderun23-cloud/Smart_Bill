@@ -864,7 +864,7 @@ function Login() {
               Rights Reserved
             </div>
             <div style={{ marginTop: 4 }}>
-              Designed by <strong>St Mary's University Seniors</strong>
+              Designed by <strong>St Mary's University Student</strong>
             </div>
           </div>
         </footer>
