@@ -109,13 +109,20 @@ function Home() {
   const [tariffs, setTariffs] = useState([]);
   const [statsVisible, setStatsVisible] = useState(false);
   const statsRef = useRef(null);
-  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
   const nav = useNavigate();
 
-  const toggleFAQ = (index) => setActiveIndex(index === activeIndex ? null : index);
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const toggleFAQ = (index) =>
+    setActiveIndex(index === activeIndex ? null : index);
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   async function handleSubmit(e) {
     try {
@@ -152,8 +159,10 @@ function Home() {
   useEffect(() => {
     fetchTariffs();
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setStatsVisible(true); },
-      { threshold: 0.3 }
+      ([entry]) => {
+        if (entry.isIntersecting) setStatsVisible(true);
+      },
+      { threshold: 0.3 },
     );
     if (statsRef.current) observer.observe(statsRef.current);
     return () => observer.disconnect();
@@ -735,7 +744,7 @@ function Home() {
         .text-center { text-align: center; }
         .mx-auto { margin-left: auto; margin-right: auto; }
       `}</style>
-
+      <br /> <br />
       {/* HERO */}
       <section className="hero-section">
         <img src={img} alt="Hero" className="hero-bg" />
@@ -750,11 +759,14 @@ function Home() {
             Ethiopia's Digital Billing Platform
           </div>
           <h1 className="hero-title">
-            Power Your Home.<br />
+            Power Your Home.
+            <br />
             <span className="accent">Smart Billing</span> Made Simple.
           </h1>
           <p className="hero-subtitle">
-            SmartBill brings modern electricity billing to Ethiopia — accurate, transparent, and effortless for customers, admins, and technicians alike.
+            SmartBill brings modern electricity billing to Ethiopia — accurate,
+            transparent, and effortless for customers, admins, and technicians
+            alike.
           </p>
           <div className="hero-actions">
             <Link to="/register" className="btn-primary">
@@ -771,7 +783,6 @@ function Home() {
           <div className="scroll-line" />
         </div>
       </section>
-
       {/* PILLS */}
       <div className="pills-section">
         <div className="pills-inner">
@@ -788,14 +799,16 @@ function Home() {
           ))}
         </div>
       </div>
-
       {/* SERVICES */}
       <section className="services-section" id="services">
         <div style={{ textAlign: "center", padding: "0 2rem" }}>
-          <div className="section-eyebrow" style={{ justifyContent: "center" }}>What We Offer</div>
+          <div className="section-eyebrow" style={{ justifyContent: "center" }}>
+            What We Offer
+          </div>
           <h2 className="section-title">Comprehensive Billing Services</h2>
           <p className="section-desc" style={{ margin: "0 auto" }}>
-            A full suite of tools to manage electricity usage, billing accuracy, and customer experience at every level.
+            A full suite of tools to manage electricity usage, billing accuracy,
+            and customer experience at every level.
           </p>
         </div>
         <div className="services-grid">
@@ -814,7 +827,6 @@ function Home() {
           ))}
         </div>
       </section>
-
       {/* FEATURES */}
       <section className="features-section" id="features">
         <div className="features-inner">
@@ -827,19 +839,57 @@ function Home() {
           </div>
           <div>
             <div className="section-eyebrow">Platform Features</div>
-            <h2 className="section-title">Everything You Need<br />in One Place</h2>
+            <h2 className="section-title">
+              Everything You Need
+              <br />
+              in One Place
+            </h2>
             <p className="section-desc" style={{ marginBottom: "2.5rem" }}>
-              From bill generation to real-time notifications, SmartBill gives customers and admins complete control.
+              From bill generation to real-time notifications, SmartBill gives
+              customers and admins complete control.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
+              }}
+            >
               {[
-                { icon: "bi bi-archive", color: "#2563EB", bg: "#EFF6FF", title: "Bill Generation & Management", desc: "Seamlessly generate and manage electricity bills. Monitor usage and track payment history in one place." },
-                { icon: "bi bi-activity", color: "#059669", bg: "#F0FDF4", title: "Service Monitoring", desc: "Track electricity consumption and monitor service status, including outages and maintenance schedules." },
-                { icon: "bi bi-chat-left-text", color: "#D97706", bg: "#FFFBEB", title: "Complaint Management", desc: "Send and track complaints related to your service. Get real-time status updates on every issue." },
-                { icon: "bi bi-broadcast", color: "#7C3AED", bg: "#F5F3FF", title: "Real-Time Updates", desc: "Receive instant notifications on bill status, new tariffs, and service updates via mobile or email." },
+                {
+                  icon: "bi bi-archive",
+                  color: "#2563EB",
+                  bg: "#EFF6FF",
+                  title: "Bill Generation & Management",
+                  desc: "Seamlessly generate and manage electricity bills. Monitor usage and track payment history in one place.",
+                },
+                {
+                  icon: "bi bi-activity",
+                  color: "#059669",
+                  bg: "#F0FDF4",
+                  title: "Service Monitoring",
+                  desc: "Track electricity consumption and monitor service status, including outages and maintenance schedules.",
+                },
+                {
+                  icon: "bi bi-chat-left-text",
+                  color: "#D97706",
+                  bg: "#FFFBEB",
+                  title: "Complaint Management",
+                  desc: "Send and track complaints related to your service. Get real-time status updates on every issue.",
+                },
+                {
+                  icon: "bi bi-broadcast",
+                  color: "#7C3AED",
+                  bg: "#F5F3FF",
+                  title: "Real-Time Updates",
+                  desc: "Receive instant notifications on bill status, new tariffs, and service updates via mobile or email.",
+                },
               ].map((f, i) => (
                 <div key={i} className="feature-item">
-                  <div className="feature-icon" style={{ background: f.bg, color: f.color }}>
+                  <div
+                    className="feature-icon"
+                    style={{ background: f.bg, color: f.color }}
+                  >
                     <i className={f.icon}></i>
                   </div>
                   <div>
@@ -852,14 +902,21 @@ function Home() {
           </div>
         </div>
       </section>
-
       {/* STATS */}
       <section className="stats-section" id="stats" ref={statsRef}>
         <div className="stats-inner">
           <div className="stats-header">
-            <div className="section-eyebrow" style={{ color: "#60A5FA", justifyContent: "center" }}>Our Impact</div>
+            <div
+              className="section-eyebrow"
+              style={{ color: "#60A5FA", justifyContent: "center" }}
+            >
+              Our Impact
+            </div>
             <h2>What We've Achieved So Far</h2>
-            <p>Streamlining electricity billing across Ethiopia — improving accuracy, efficiency, and customer satisfaction.</p>
+            <p>
+              Streamlining electricity billing across Ethiopia — improving
+              accuracy, efficiency, and customer satisfaction.
+            </p>
           </div>
           <div className="stats-grid">
             {stats.map((s, i) => (
@@ -868,52 +925,109 @@ function Home() {
           </div>
         </div>
       </section>
-
       {/* PRICING */}
       <section className="pricing-section" id="pricing">
         <div style={{ textAlign: "center", padding: "0 2rem" }}>
-          <div className="section-eyebrow" style={{ justifyContent: "center" }}>Tariff Plans</div>
+          <div className="section-eyebrow" style={{ justifyContent: "center" }}>
+            Tariff Plans
+          </div>
           <h2 className="section-title">Simple, Transparent Pricing</h2>
           <p className="section-desc" style={{ margin: "0 auto" }}>
-            Choose the right tariff plan for your electricity usage and enjoy seamless services.
+            Choose the right tariff plan for your electricity usage and enjoy
+            seamless services.
           </p>
         </div>
         <div className="pricing-grid">
-          {tariffs.length === 0 ? (
-            // Skeleton / placeholder
-            [1,2,3].map(i => (
-              <div key={i} className="pricing-card" style={{ opacity: 0.5, animation: "pulse 1.5s infinite" }}>
-                <div style={{ height: 20, background: "#E2E8F0", borderRadius: 8, marginBottom: 12 }} />
-                <div style={{ height: 40, background: "#E2E8F0", borderRadius: 8, marginBottom: 20, width: "60%" }} />
-                <div style={{ height: 12, background: "#E2E8F0", borderRadius: 8, marginBottom: 8 }} />
-                <div style={{ height: 12, background: "#E2E8F0", borderRadius: 8, marginBottom: 8, width: "80%" }} />
-                <div style={{ height: 40, background: "#E2E8F0", borderRadius: 12, marginTop: 20 }} />
-              </div>
-            ))
-          ) : tariffs.map((tariff, i) => (
-            <div key={i} className={`pricing-card${i === 1 ? " featured" : ""}`}>
-              {i === 1 && <div className="pricing-badge">Most Popular</div>}
-              <div className="pricing-name">{tariff.tariff_name}</div>
-              <div className="pricing-price">
-                <span className="price-currency">ETB</span>
-                <span className="price-amount">{tariff.price}</span>
-                <span className="price-unit">/ kWh</span>
-              </div>
-              <hr className="pricing-divider" />
-              <ul className="pricing-list">
-                <li><i className="bi bi-check-circle-fill"></i> Units {tariff.unit_min} – {tariff.unit_max} kWh</li>
-                <li><i className="bi bi-check-circle-fill"></i> Effective from {tariff.effective_date}</li>
-                <li><i className="bi bi-check-circle-fill"></i> Standard billing rate</li>
-                <li><i className="bi bi-check-circle-fill"></i> Monthly invoicing</li>
-              </ul>
-              <Link to="/login">
-                <button className="btn-pricing">Choose This Plan</button>
-              </Link>
-            </div>
-          ))}
+          {tariffs.length === 0
+            ? // Skeleton / placeholder
+              [1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="pricing-card"
+                  style={{ opacity: 0.5, animation: "pulse 1.5s infinite" }}
+                >
+                  <div
+                    style={{
+                      height: 20,
+                      background: "#E2E8F0",
+                      borderRadius: 8,
+                      marginBottom: 12,
+                    }}
+                  />
+                  <div
+                    style={{
+                      height: 40,
+                      background: "#E2E8F0",
+                      borderRadius: 8,
+                      marginBottom: 20,
+                      width: "60%",
+                    }}
+                  />
+                  <div
+                    style={{
+                      height: 12,
+                      background: "#E2E8F0",
+                      borderRadius: 8,
+                      marginBottom: 8,
+                    }}
+                  />
+                  <div
+                    style={{
+                      height: 12,
+                      background: "#E2E8F0",
+                      borderRadius: 8,
+                      marginBottom: 8,
+                      width: "80%",
+                    }}
+                  />
+                  <div
+                    style={{
+                      height: 40,
+                      background: "#E2E8F0",
+                      borderRadius: 12,
+                      marginTop: 20,
+                    }}
+                  />
+                </div>
+              ))
+            : tariffs.map((tariff, i) => (
+                <div
+                  key={i}
+                  className={`pricing-card${i === 1 ? " featured" : ""}`}
+                >
+                  {i === 1 && <div className="pricing-badge">Most Popular</div>}
+                  <div className="pricing-name">{tariff.tariff_name}</div>
+                  <div className="pricing-price">
+                    <span className="price-currency">ETB</span>
+                    <span className="price-amount">{tariff.price}</span>
+                    <span className="price-unit">/ kWh</span>
+                  </div>
+                  <hr className="pricing-divider" />
+                  <ul className="pricing-list">
+                    <li>
+                      <i className="bi bi-check-circle-fill"></i> Units{" "}
+                      {tariff.unit_min} – {tariff.unit_max} kWh
+                    </li>
+                    <li>
+                      <i className="bi bi-check-circle-fill"></i> Effective from{" "}
+                      {tariff.effective_date}
+                    </li>
+                    <li>
+                      <i className="bi bi-check-circle-fill"></i> Standard
+                      billing rate
+                    </li>
+                    <li>
+                      <i className="bi bi-check-circle-fill"></i> Monthly
+                      invoicing
+                    </li>
+                  </ul>
+                  <Link to="/login">
+                    <button className="btn-pricing">Choose This Plan</button>
+                  </Link>
+                </div>
+              ))}
         </div>
       </section>
-
       {/* FAQ */}
       <section className="faq-section" id="faq">
         <div className="faq-inner">
@@ -921,11 +1035,15 @@ function Home() {
             <div className="section-eyebrow">Help Center</div>
             <h2 className="section-title">Frequently Asked Questions</h2>
             <p className="section-desc" style={{ marginBottom: "2rem" }}>
-              Get answers to your questions about billing, payments, and service-related queries.
+              Get answers to your questions about billing, payments, and
+              service-related queries.
             </p>
             <div className="faq-list">
               {faqs.map((faq, i) => (
-                <div key={i} className={`faq-item${activeIndex === i ? " open" : ""}`}>
+                <div
+                  key={i}
+                  className={`faq-item${activeIndex === i ? " open" : ""}`}
+                >
                   <div className="faq-question" onClick={() => toggleFAQ(i)}>
                     <div className="faq-q-text">
                       <i className="bi bi-question-circle-fill"></i>
@@ -947,14 +1065,22 @@ function Home() {
           </div>
         </div>
       </section>
-
       {/* CONTACT */}
       <section className="contact-section" id="contact">
-        <div style={{ textAlign: "center", padding: "0 2rem", marginBottom: "3rem" }}>
-          <div className="section-eyebrow" style={{ justifyContent: "center" }}>Get In Touch</div>
+        <div
+          style={{
+            textAlign: "center",
+            padding: "0 2rem",
+            marginBottom: "3rem",
+          }}
+        >
+          <div className="section-eyebrow" style={{ justifyContent: "center" }}>
+            Get In Touch
+          </div>
           <h2 className="section-title">We're Here to Help</h2>
           <p className="section-desc" style={{ margin: "0 auto" }}>
-            Have a question about your bill or service? Reach out — our team is ready to assist you.
+            Have a question about your bill or service? Reach out — our team is
+            ready to assist you.
           </p>
         </div>
         <div className="contact-inner">
@@ -962,30 +1088,40 @@ function Home() {
             <h3>Contact Information</h3>
             <p>Fill out the form and we'll get back to you within 24 hours.</p>
             <div className="contact-item">
-              <div className="contact-item-icon"><i className="bi bi-geo-alt-fill"></i></div>
+              <div className="contact-item-icon">
+                <i className="bi bi-geo-alt-fill"></i>
+              </div>
               <div>
                 <h4>Address</h4>
                 <p>Addis Ababa, Ethiopia</p>
               </div>
             </div>
             <div className="contact-item">
-              <div className="contact-item-icon"><i className="bi bi-telephone-fill"></i></div>
+              <div className="contact-item-icon">
+                <i className="bi bi-telephone-fill"></i>
+              </div>
               <div>
                 <h4>Phone</h4>
                 <p>+251 11 123 4567</p>
               </div>
             </div>
             <div className="contact-item">
-              <div className="contact-item-icon"><i className="bi bi-envelope-fill"></i></div>
+              <div className="contact-item-icon">
+                <i className="bi bi-envelope-fill"></i>
+              </div>
               <div>
                 <h4>Email</h4>
                 <p>support@ethioelectricity.com</p>
               </div>
             </div>
             <div className="contact-socials">
-              {["twitter-x","facebook","instagram","linkedin"].map((s,i) => (
-                <a key={i} href="#" className="social-btn"><i className={`bi bi-${s}`}></i></a>
-              ))}
+              {["twitter-x", "facebook", "instagram", "linkedin"].map(
+                (s, i) => (
+                  <a key={i} href="#" className="social-btn">
+                    <i className={`bi bi-${s}`}></i>
+                  </a>
+                ),
+              )}
             </div>
           </div>
 
@@ -998,24 +1134,59 @@ function Home() {
             <div className="form-row">
               <div className="form-group">
                 <label className="form-label">Your Name</label>
-                <input type="text" name="name" placeholder="Abebe Kebede" className="form-input" value={formData.name} onChange={handleChange} />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Abebe Kebede"
+                  className="form-input"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
                 {errors.name && <p className="form-error">{errors.name[0]}</p>}
               </div>
               <div className="form-group">
                 <label className="form-label">Email Address</label>
-                <input type="email" name="email" placeholder="abebe@example.com" className="form-input" value={formData.email} onChange={handleChange} />
-                {errors.email && <p className="form-error">{errors.email[0]}</p>}
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="abebe@example.com"
+                  className="form-input"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                {errors.email && (
+                  <p className="form-error">{errors.email[0]}</p>
+                )}
               </div>
             </div>
             <div className="form-group">
               <label className="form-label">Subject</label>
-              <input type="text" name="subject" placeholder="What's this about?" className="form-input" value={formData.subject} onChange={handleChange} />
-              {errors.subject && <p className="form-error">{errors.subject[0]}</p>}
+              <input
+                type="text"
+                name="subject"
+                placeholder="What's this about?"
+                className="form-input"
+                value={formData.subject}
+                onChange={handleChange}
+              />
+              {errors.subject && (
+                <p className="form-error">{errors.subject[0]}</p>
+              )}
             </div>
             <div className="form-group">
               <label className="form-label">Message</label>
-              <textarea name="message" rows="5" placeholder="Write your message here..." className="form-input" style={{ resize: "vertical", minHeight: 130 }} value={formData.message} onChange={handleChange}></textarea>
-              {errors.message && <p className="form-error">{errors.message[0]}</p>}
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Write your message here..."
+                className="form-input"
+                style={{ resize: "vertical", minHeight: 130 }}
+                value={formData.message}
+                onChange={handleChange}
+              ></textarea>
+              {errors.message && (
+                <p className="form-error">{errors.message[0]}</p>
+              )}
             </div>
             <button onClick={handleSubmit} className="btn-submit">
               Send Message <i className="bi bi-send-fill"></i>
@@ -1023,41 +1194,101 @@ function Home() {
           </div>
         </div>
       </section>
-
       {/* FOOTER */}
       <footer className="footer" id="footer">
         <div className="footer-inner">
           <div className="footer-top">
             <div className="footer-brand">
               <h3>⚡ SmartBill Ethiopia</h3>
-              <p>A reliable and efficient system for managing electricity billing in Ethiopia. Accurate billing, transparent services, and an improved customer experience.</p>
+              <p>
+                A reliable and efficient system for managing electricity billing
+                in Ethiopia. Accurate billing, transparent services, and an
+                improved customer experience.
+              </p>
             </div>
             <div style={{ display: "flex", gap: "4rem", flexWrap: "wrap" }}>
               <div>
-                <h4 style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "1rem", fontWeight: 600 }}>Platform</h4>
-                {["Bill Management","Tariff Plans","Complaints","Reports"].map(l => (
+                <h4
+                  style={{
+                    color: "rgba(255,255,255,0.7)",
+                    fontSize: "0.8rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    marginBottom: "1rem",
+                    fontWeight: 600,
+                  }}
+                >
+                  Platform
+                </h4>
+                {[
+                  "Bill Management",
+                  "Tariff Plans",
+                  "Complaints",
+                  "Reports",
+                ].map((l) => (
                   <div key={l} style={{ marginBottom: "0.6rem" }}>
-                    <a href="#" style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.9rem", textDecoration: "none", transition: "color 0.2s" }}
-                      onMouseEnter={e => e.target.style.color = "#93C5FD"}
-                      onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.45)"}>{l}</a>
+                    <a
+                      href="#"
+                      style={{
+                        color: "rgba(255,255,255,0.45)",
+                        fontSize: "0.9rem",
+                        textDecoration: "none",
+                        transition: "color 0.2s",
+                      }}
+                      onMouseEnter={(e) => (e.target.style.color = "#93C5FD")}
+                      onMouseLeave={(e) =>
+                        (e.target.style.color = "rgba(255,255,255,0.45)")
+                      }
+                    >
+                      {l}
+                    </a>
                   </div>
                 ))}
               </div>
               <div>
-                <h4 style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "1rem", fontWeight: 600 }}>Support</h4>
-                {["FAQ","Contact Us","Help Center","Privacy Policy"].map(l => (
-                  <div key={l} style={{ marginBottom: "0.6rem" }}>
-                    <a href="#" style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.9rem", textDecoration: "none", transition: "color 0.2s" }}
-                      onMouseEnter={e => e.target.style.color = "#93C5FD"}
-                      onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.45)"}>{l}</a>
-                  </div>
-                ))}
+                <h4
+                  style={{
+                    color: "rgba(255,255,255,0.7)",
+                    fontSize: "0.8rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    marginBottom: "1rem",
+                    fontWeight: 600,
+                  }}
+                >
+                  Support
+                </h4>
+                {["FAQ", "Contact Us", "Help Center", "Privacy Policy"].map(
+                  (l) => (
+                    <div key={l} style={{ marginBottom: "0.6rem" }}>
+                      <a
+                        href="#"
+                        style={{
+                          color: "rgba(255,255,255,0.45)",
+                          fontSize: "0.9rem",
+                          textDecoration: "none",
+                          transition: "color 0.2s",
+                        }}
+                        onMouseEnter={(e) => (e.target.style.color = "#93C5FD")}
+                        onMouseLeave={(e) =>
+                          (e.target.style.color = "rgba(255,255,255,0.45)")
+                        }
+                      >
+                        {l}
+                      </a>
+                    </div>
+                  ),
+                )}
               </div>
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© 2025 Ethiopia Electricity Billing System. All Rights Reserved.</p>
-            <p className="designer">Designed by <span>St. Mary's University Seniors</span></p>
+            <p>
+              © 2025 Ethiopia Electricity Billing System. All Rights Reserved.
+            </p>
+            <p className="designer">
+              Designed by <span>St. Mary's University Student</span>
+            </p>
           </div>
         </div>
       </footer>

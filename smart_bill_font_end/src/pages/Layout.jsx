@@ -9,10 +9,12 @@ function Layout() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-800 shadow-md">
         <div className="container mx-auto px-4 flex items-center justify-between h-18">
-          <Link to="/" className="flex items-center">
-            <span className="text-white text-2xl font-bold italic">
-              Smart Bill
-            </span>
+          <Link to="/" className="logo-area">
+            <div className="logo-icon">⚡</div>
+            <div>
+              <span className="logo-text">SmartBill</span>
+              <span className="logo-sub">Ethiopia Electricity</span>
+            </div>
           </Link>
 
           <nav className="hidden xl:flex space-x-6">
