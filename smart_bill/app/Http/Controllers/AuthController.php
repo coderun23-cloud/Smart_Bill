@@ -151,7 +151,7 @@ public function register(Request $request)
 
         return response()->json($user);
     }
-
+    // used to deleted an authorised account and send an email after that
    public function deleteAccount(Request $request, $id)
 {
     $reason = $request->input('reason');
@@ -188,7 +188,7 @@ public function register(Request $request)
             ? response()->json(['message' => 'Password reset link sent!'])
             : response()->json(['message' => 'Failed to send reset link.'], 400);
     }
-    // a function to reset a password by sending an email to the registered account
+    // a function to reset a password by sending an email to the registered account and able to reset password 
 public function reset(Request $request)
 {
     $request->validate([
